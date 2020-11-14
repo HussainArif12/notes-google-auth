@@ -14,8 +14,5 @@ connectDB();
 app.engine('.hbs', exphbs({defaultLayout: 'main' , 'extname' : '.hbs'}));
 app.set('view engine', '.hbs');
 
-//static folder
-app.use(express.static(path.join(__dirname,'public')));
-
 
 app.listen(PORT , console.log('LIstening at port 3000'));
