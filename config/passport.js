@@ -4,8 +4,8 @@ const User = require('../models/User');
 
 module.exports = function(passport){ 
     passport.use(new GoogleStrategy({
-        clientID: GOOGLE_CLIENT_ID,
-        clientSecret: GOOGLE_CLIENT_SECRET,
+        clientID: process.env.GOOOGLE_ID,
+        clientSecret: process.env.GOOGLE_SECRET,
         callbackURL: "/auth/google/callback"
       },
       async(accessToken, refreshToken, profile, done)=> {
