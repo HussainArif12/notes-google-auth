@@ -7,12 +7,13 @@ const app = express();
 const PORT = 3000;
 
 //load dotenv config.
-dotenv.config();
-
+dotenv.config();    
 connectDB();
 //handlebars
 app.engine('.hbs', exphbs({defaultLayout: 'main' , 'extname' : '.hbs'}));
 app.set('view engine', '.hbs');
 
+//routes
+app.use('/',require('./routes/index'));
 
 app.listen(PORT , console.log('LIstening at port 3000'));
