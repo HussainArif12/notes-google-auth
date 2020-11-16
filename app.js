@@ -31,5 +31,6 @@ app.use(passport.session());
 
 //routes
 app.use('/',require('./routes/index'));
+app.use('/auth',require('./routes/auth'));
 
 app.listen(PORT , console.log('LIstening at port 3000'));
