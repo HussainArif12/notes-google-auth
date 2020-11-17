@@ -10,7 +10,8 @@ router.get('/',ensureGuest,(req,res)=>{
 })
 
 router.get('/dashboard',ensureAuth,(req,res)=>{
-    res.render('dashboard')
+   
+    res.render('dashboard',{name : req.user.firstName});
 })
 
 module.exports = router;

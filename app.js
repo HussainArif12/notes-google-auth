@@ -3,6 +3,8 @@ const exphbs = require('express-handlebars');
 const dotenv = require('dotenv');
 const passport = require('passport');
 const session  = require('express-session');
+const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo')(session);
 const connectDB = require('./config/db')
 
 const app = express();
@@ -22,7 +24,8 @@ app.set('view engine', '.hbs');
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store : new MongoStore({mongooseConnection : mongoose.connection})
   }))
 
 //passport middleware
