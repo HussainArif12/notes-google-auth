@@ -15,10 +15,7 @@ const UserSchema = new Schema({
     default: Date.now(),
   },
 
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-  },
+  
 });
 
 module.exports = mongoose.model('Note', NoteSchema);
