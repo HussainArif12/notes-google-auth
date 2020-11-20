@@ -10,6 +10,11 @@ const connectDB = require('./config/db')
 const app = express();
 const PORT = 3000;
 
+//bodyparser
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
+
+
 //passport config
 require('./config/passport')(passport);
 
@@ -35,5 +40,5 @@ app.use(passport.session());
 //routes
 app.use('/',require('./routes/index'));
 app.use('/auth',require('./routes/auth'));
-
+app.use('/notes',require('./routes/notes'));
 app.listen(PORT , console.log('LIstening at port 3000'));
