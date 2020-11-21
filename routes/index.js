@@ -10,7 +10,7 @@ router.get('/', ensureGuest, (req, res) => {
 
 router.get('/dashboard', ensureAuth, async (req, res) => {
   try {
-    const notes = await Note.find({}).lean();
+    const notes = await Note.find({user : req.user.id}).lean();
     console.log(notes);
     res.render('dashboard', { name: req.user.firstName, notes });
   } catch (err) {

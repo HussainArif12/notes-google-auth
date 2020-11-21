@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars');
 const dotenv = require('dotenv');
 const passport = require('passport');
 const session  = require('express-session');
+const methodOverride = require('method-override')
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session);
 const connectDB = require('./config/db')
@@ -10,10 +11,20 @@ const connectDB = require('./config/db')
 const app = express();
 const PORT = 3000;
 
+app.use(require('morgan')('dev'));
+
 //bodyparser
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
+app.use(methodOverride(function (req, res) {
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    // look in urlencoded POST bodies and delete it
+    var method = req.body._method
+    delete req.body._method
+    return method
+  }
+}))
 
 //passport config
 require('./config/passport')(passport);

@@ -1,1 +1,26 @@
 <h6>Hello {{name}}, here are your stories:</h6>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each notes}}
+        <tr>
+            <td><a href="notes/{{_id}}">{{title}}</a></td>
+            <td>{{dateCreated}} </td>
+            <td>
+                <a href="/notes/edit/{{_id}}">Edit page</a>
+                <form action="/notes/delete/{{_id}}" method="POST" >
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Delete note</button> 
+                </form>
+             </td>
+        </tr>
+    </tbody>
+    {{/each}}
+</table>
