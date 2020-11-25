@@ -33,7 +33,7 @@ require('./config/passport')(passport);
 dotenv.config();    
 connectDB();
 //handlebars
-app.engine('.hbs', exphbs({defaultLayout: 'main' , 'extname' : '.hbs'}));
+app.engine('.hbs', exphbs({defaultLayout: 'main' , extname : '.hbs' , allowProtoMethodsByDefault:true}));
 app.set('view engine', '.hbs');
 
 //Express sessions

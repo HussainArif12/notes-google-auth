@@ -18,7 +18,15 @@ router.post('/add',ensureAuth,async (req,res)=>{
        console.log(err);
    }
 })
-
+router.get('/:id',async(req,res)=>{
+    try {
+    const note = await Note.findById( req.params.id).lean();
+    console.log(note);
+    res.render('notes/read',{note})
+    }catch(err){
+        console.log(err);
+    }
+})
 router.delete('/delete/:id',async(req,res)=>{
    try {
     await Note.deleteOne({_id : req.params.id});
