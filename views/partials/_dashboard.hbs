@@ -12,7 +12,7 @@
         {{#each notes}}
         <tr>
             <td><a href="notes/{{_id}}">{{title}}</a></td>
-            <td>{{dateCreated}} </td>
+            <td>{{formatDate dateCreated}} </td>
             <td>
                 <a href="/notes/edit/{{_id}}">Edit page</a>
                 <form action="/notes/delete/{{_id}}" method="POST" >
